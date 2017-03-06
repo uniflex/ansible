@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+  - name: Get kernel version
+    command: uname -a
+    register: kernel_version
+    changed_when: false
+
+  - debug: var=kernel_version.stdout
+
+  - name: Get system version
+    command: cat /etc/lsb-release
+    register: system_version
+    changed_when: false
+
+  - debug: var=system_version.stdout_lines

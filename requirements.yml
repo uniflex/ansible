@@ -1,0 +1,82 @@
+---
+dependencies:
+  uniflex:
+    dest: /
+    source: https://github.com/uniflex/uniflex.git
+
+  sbi:
+    dest: /
+    source: https://github.com/uniflex/sbi.git
+
+  mininet:
+    dest: /
+    source: https://github.com/uniflex/uniflex-mininet.git
+
+  stream_pipe:
+    dest: /libs
+    source: https://github.com/wishful-project/stream_pipe.git
+
+  pyre:
+    dest: /libs
+    source: https://github.com/wishful-project/pyre.git
+
+  python_tc:
+    dest: /libs
+    source: https://github.com/wishful-project/python-tc.git
+
+  scapy:
+    dest: /libs
+    source: https://github.com/phaethon/scapy.git
+
+  simple:
+    dest: /modules
+    source: https://github.com/uniflex/module_simple.git
+
+  net_linux:
+    dest: /modules
+    source: https://github.com/uniflex/module_net_linux.git
+
+  rs_signal_gen:
+    dest: /modules
+    source: https://github.com/uniflex/module_rs_signal_gen.git
+
+  gnuradio:
+    dest: /modules
+    source: https://github.com/uniflex/module_gnuradio.git
+
+  ni_sdr:
+    dest: /modules
+    source: https://github.com/uniflex/module_ni_sdr.git
+
+  wifi:
+    dest: /modules
+    source: https://github.com/uniflex/module_wifi.git
+
+  wifi_ath:
+    dest: /modules
+    source: https://github.com/uniflex/module_wifi_ath.git
+
+  wifi_gnuradio:
+    dest: /modules
+    source: https://github.com/uniflex/module_wifi_gnuradio.git
+
+  wifi_intel:
+    dest: /modules
+    source: https://github.com/uniflex/module_wifi_intel.git
+
+  discovery_pyre:
+    dest: /apps
+    source: https://github.com/uniflex/app_discovery_pyre.git
+
+  handover:
+    dest: /apps
+    source: https://github.com/uniflex/app_handover_wifi.git
+
+  wireless_topology:
+    dest: /apps
+    source: https://github.com/uniflex/app_wireless_topology.git
+
+  iperf:
+    dest: /apps
+    source: https://github.com/uniflex/app_iperf_control.git
+

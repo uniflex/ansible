@@ -1,0 +1,72 @@
+---
+- hosts: all
+  become: true
+  become_method: su
+  become_user: root
+  vars:
+    installation_dir: /root/uniflex
+
+  tasks:
+    - name: Delete UniFlex directory
+      file: 
+         path: "{{ installation_dir }}"
+         state: absent
+      tags:
+        - delete
+        - remove
+
+    - name: Install requirements for UniFlex
+      apt: pkg={{ item }} state=installed update_cache=true
+      with_items:
+      - wget
+      - git
+      - python
+      - python-virtualenv
+      - python-dev
+      - python3-dev
+      - python3-pip
+      tags:
+        - install
+
+    - file:
+        path: "{{ installation_dir }}"
+        state: directory
+      tags:
+        - install
+    - file:
+        path: "{{ installation_dir }}/apps"
+        state: directory
+      tags:
+        - install
+    - file:
+        path: "{{ installation_dir }}/modules"
+        state: directory
+      tags:
+        - install
+ 
+    - include_vars:
+        file: requirements.yml
+      tags:
+        - install
+
+    - name: Ensure github.com is a known host
+      lineinfile:
+        dest: ~/.ssh/known_hosts
+        create: yes
+        state: present
+        line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+        regexp: "^github\\.com"
+      tags:
+        - install
+
+    - name: Clone git reposiories
+      git: repo={{ item.value.source }} dest="{{ installation_dir }}{{ item.value.dest }}/{{ item.key }}" force=yes accept_hostkey=True
+      with_dict: "{{ dependencies }}"
+      tags:
+        - install
+
+    - name: Install UniFlex framework
+      pip: name="{{ installation_dir }}{{ item.value.dest }}/{{ item.key }}" executable=pip3 extra_args="-U -e"
+      with_dict: "{{ dependencies }}"
+      tags:
+        - install

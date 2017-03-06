@@ -1,0 +1,9 @@
+[all:vars]
+ansible_connection=ssh 
+ansible_ssh_user=root 
+ansible_ssh_pass=nuc
+
+[nodes]
+nuc3  ansible_host=10.0.0.3
+nuc19  ansible_host=10.0.0.19
+nuc20  ansible_host=10.0.0.20
