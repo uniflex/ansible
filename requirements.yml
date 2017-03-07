@@ -8,9 +8,17 @@ dependencies:
     dest: /
     source: https://github.com/uniflex/sbi.git
 
+  examples:
+    dest: /
+    source: https://github.com/uniflex/examples.git
+
   mininet:
     dest: /
     source: https://github.com/uniflex/uniflex-mininet.git
+
+  node-red:
+    dest: /
+    source: https://github.com/uniflex/node-red-uniflex.git
 
   stream_pipe:
     dest: /libs
